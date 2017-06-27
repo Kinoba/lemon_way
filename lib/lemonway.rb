@@ -6,8 +6,8 @@ module Lemonway
   @@client = nil
   @@configuration = {}
 
-  def Lemonway.init(options = {})
-    @@client = Client.new(options)
+  def Lemonway.init
+    @@client = Client.new(@@configuration)
   end
 
   def Lemonway.reset
@@ -18,10 +18,10 @@ module Lemonway
   def Lemonway.configuration=(configuration)
     @@configuration = configuration
 
-    Lemonway.init(@@configuration)
+    Lemonway.init
   end
 
   def Lemonway.client
-    @@client || Lemonway.init({})
+    @@client || Lemonway.init
   end
 end
