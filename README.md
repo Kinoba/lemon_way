@@ -1,6 +1,6 @@
 # Lemonway
 
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/AlexKtf/lemonway-ruby)
 
 [![CircleCI](https://circleci.com/gh/AlexKtf/lemonway-ruby/tree/master.svg?style=svg)](https://circleci.com/gh/AlexKtf/lemonway-ruby/tree/master)
 
@@ -43,13 +43,15 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lemonway-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/AlexKtf/lemonway-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## TO DO
 - DIRECTKIT_URL for production
 - Wallet IP & Wallet Ua
 - MoneyIn module
 - MoneyOut module
+- Improve configuration
+- Improve README / Wiki ?
 
 ## License
 
