@@ -41,7 +41,7 @@ describe Lemonway::Client do
   end
 
   describe '#send_request' do
-    subject(:send_request) { client.send_request('method_name', 'version') }
+    subject(:send_request) { client.send_request('GetWalletDetails', '1.1') }
     let(:client) { described_class.new(options) }
     let(:options) { { login: 'Lemon', password: 'Way' } }
     let(:returned_body) { { d: { 'WALLET': { lemon: 'way' } } } }
@@ -55,13 +55,13 @@ describe Lemonway::Client do
     it 'sends the request with the correct url, headers and body' do
       expect(described_class).to \
         receive(:post).with(
-          "#{described_class::DIRECTKIT_URL}/method_name",
+          "#{described_class::DIRECTKIT_URL}/GetWalletDetails",
           body: {
             p: {
               wlLogin: 'Lemon',
               wlPass: 'Way',
               language: described_class::DEFAULT_LANGUAGE,
-              version: 'version',
+              version: '1.1',
               walletIp: '127.0.0.1',
               walletUa: 'User-agent'
             }
@@ -107,8 +107,8 @@ describe Lemonway::Client do
           .and_return(OpenStruct.new(body: returned_body.to_json))
       end
 
-      it 'raises a response error' do
-        expect { send_request }.to raise_error(Lemonway::Errors::ResponseError)
+      it 'raises the related method error' do
+        expect { send_request }.to raise_error(Lemonway::Errors::GetWalletDetailsError)
       end
     end
   end

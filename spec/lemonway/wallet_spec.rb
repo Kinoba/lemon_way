@@ -4,52 +4,84 @@ describe Lemonway::Wallet do
   end
 
   describe '#get' do
-    it 'raises the get error if wallet or email parameter is not present' do
-      expect { described_class.get }.to \
-        raise_error(Lemonway::Errors::GetWalletParameterError)
+    it 'calls the send request method with the get wallet details parameters' do
+      expect(Lemonway.client).to \
+        receive(:send_request).with('GetWalletDetails', '2.0', { wallet: 'wallet_id' })
+      described_class.get(wallet: 'wallet_id')
     end
 
-    it 'raises the get error if parameter is not a hash' do
-      expect { described_class.get('wallet_id') }.to \
-        raise_error(Lemonway::Errors::GetWalletParameterError)
+    context 'with wrong parameters' do
+      before { stub_error_lemonway_request('GetWalletDetails') }
+
+      it 'raises the get wallet details error' do
+        expect { described_class.get }.to \
+          raise_error(Lemonway::Errors::GetWalletDetailsError)
+      end
     end
   end
 
   describe '#register' do
-    it 'raises the register error if parameter is not a hash' do
-      expect { described_class.register('wallet_id') }.to \
-        raise_error(Lemonway::Errors::RegisterWalletParameterError)
+    it 'calls the send request method with the register wallet parameters' do
+      expect(Lemonway.client).to \
+        receive(:send_request).with('RegisterWallet', '1.1', { wallet: 'wallet_id' })
+      described_class.register(wallet: 'wallet_id')
+    end
+
+    context 'with wrong parameters' do
+      before { stub_error_lemonway_request('RegisterWallet') }
+
+      it 'raises the register wallet error' do
+        expect { described_class.register }.to raise_error(Lemonway::Errors::RegisterWalletError)
+      end
     end
   end
 
   describe '#update' do
-    it 'raises the update error if parameter is not a hash' do
-      expect { described_class.update('wallet_id') }.to \
-        raise_error(Lemonway::Errors::UpdateWalletParameterError)
+    it 'calls the send request method with the update wallet details parameters' do
+      expect(Lemonway.client).to \
+        receive(:send_request).with('UpdateWalletDetails', '1.0', { wallet: 'wallet_id' })
+      described_class.update(wallet: 'wallet_id')
     end
 
-    it 'raises the update error if parameter wallet is not present' do
-      expect { described_class.update(test: 'Lemonway') }.to \
-        raise_error(Lemonway::Errors::UpdateWalletParameterError)
+    context 'with wrong parameters' do
+      before { stub_error_lemonway_request('UpdateWalletDetails') }
+
+      it 'raises the update wallet details error' do
+        expect { described_class.update }.to \
+          raise_error(Lemonway::Errors::UpdateWalletDetailsError)
+      end
     end
   end
 
   describe '#update_status' do
-    it 'raises the update_status error if parameter is not a hash' do
-      expect { described_class.update_status('wallet_id') }.to \
-        raise_error(Lemonway::Errors::UpdateWalletStatusParameterError)
+    it 'calls the send request method with the update wallet details parameters' do
+      expect(Lemonway.client).to \
+        receive(:send_request).with('UpdateWalletStatus', '1.0', { wallet: 'wallet_id' })
+      described_class.update_status(wallet: 'wallet_id')
     end
 
-    it 'raises the update_status error if parameter wallet is not present' do
-      expect { described_class.update_status(test: 'Lemonway') }.to \
-        raise_error(Lemonway::Errors::UpdateWalletStatusParameterError)
+    context 'with wrong parameters' do
+      before { stub_error_lemonway_request('UpdateWalletStatus') }
+
+      it 'raises the update status error' do
+        expect { described_class.update_status }.to raise_error(Lemonway::Errors::UpdateWalletStatusError)
+      end
     end
   end
 
   describe '#upload_file' do
-    it 'raises the upload_file error if parameter is not a hash' do
-      expect { described_class.upload_file('wallet_id') }.to \
-        raise_error(Lemonway::Errors::UploadFileParameterError)
+    it 'calls the send request method with the upload file parameters' do
+      expect(Lemonway.client).to \
+        receive(:send_request).with('UploadFile', '1.1', { wallet: 'wallet_id' })
+      described_class.upload_file(wallet: 'wallet_id')
+    end
+
+    context 'with wrong parameters' do
+      before { stub_error_lemonway_request('UploadFile') }
+
+      it 'raises the upload file error' do
+        expect { described_class.upload_file }.to raise_error(Lemonway::Errors::UploadFileError)
+      end
     end
   end
 end
