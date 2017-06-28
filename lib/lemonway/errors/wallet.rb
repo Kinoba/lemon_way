@@ -49,5 +49,14 @@ module Lemonway
         }, error)
       end
     end
+
+    class GetWalletTransHistoryError < LemonwayError
+      def initialize(error)
+        super(%{You need to specify the wallet informations.
+
+          API: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/getwallettranshistory-get-list-of-all-transactions-of-a-wallet
+        }, error)
+      end
+    end
   end
 end

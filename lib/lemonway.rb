@@ -1,6 +1,7 @@
 require 'lemonway/version'
 require 'lemonway/client'
 require 'lemonway/wallet'
+require 'lemonway/money_in'
 
 module Lemonway
   @@client = nil

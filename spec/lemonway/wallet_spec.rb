@@ -84,4 +84,21 @@ describe Lemonway::Wallet do
       end
     end
   end
+
+  describe '#transactions_history' do
+    it 'calls the send request method with the upload file parameters' do
+      expect(Lemonway.client).to \
+        receive(:send_request).with('GetWalletTransHistory', '2.1', { wallet: 'wallet_id' })
+      described_class.transactions_history(wallet: 'wallet_id')
+    end
+
+    context 'with wrong parameters' do
+      before { stub_error_lemonway_request('GetWalletTransHistory') }
+
+      it 'raises the upload file error' do
+        expect { described_class.transactions_history }.to \
+          raise_error(Lemonway::Errors::GetWalletTransHistoryError)
+      end
+    end
+  end
 end
