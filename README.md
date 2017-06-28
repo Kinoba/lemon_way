@@ -24,9 +24,7 @@ Or install it yourself as:
 
     $ gem install lemonway-ruby
 
-## Usage
-
-- Configuration:
+## Configuration:
 
 ```ruby
 Lemonway.configuration = { login: ENV['LEMONWAY_LOGIN'], password: ENV['LEMONWAY_PASSWORD'] }
@@ -48,10 +46,10 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/AlexKt
 ## TO DO
 - DIRECTKIT_URL for production
 - Wallet IP & Wallet Ua
-- MoneyIn module
 - MoneyOut module
 - Improve configuration
 - Improve README / Wiki ?
+- Improve specific specs ?
 
 ## License
 

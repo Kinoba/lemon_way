@@ -8,7 +8,7 @@ module Lemonway
 
       raise Errors::const_get("#{method}Error").new(response[:e]) if response[:e].present?
 
-      super(response[:wallet] || response[:moneyinweb] || response[:trans])
+      super(response[:wallet] || response[:moneyinweb] || response[:trans] || response[:form])
     end
   end
 end
