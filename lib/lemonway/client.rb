@@ -31,7 +31,7 @@ module Lemonway
 
     def send_request(lw_method, version, params = {})
       response = perform_request(lw_method, version, params)
-      ResponseAdapter.new(response)
+      ResponseAdapter.new(lw_method, response)
     end
 
     private
