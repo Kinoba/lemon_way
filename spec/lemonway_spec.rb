@@ -4,9 +4,7 @@ describe Lemonway do
   end
 
   describe '#reset' do
-    before do
-      Lemonway.configuration = { login: 'Login', password: 'Password' }
-    end
+    before { set_lemonway_configuration }
 
     it 'resets the Lemonway client' do
       Lemonway.reset
@@ -15,9 +13,7 @@ describe Lemonway do
   end
 
   describe '#configuration=' do
-    before do
-      Lemonway.configuration = { login: 'Login', password: 'Password' }
-    end
+    before { set_lemonway_configuration }
 
     it 'creates the Lemonway client' do
       expect(Lemonway.client).to be_a Lemonway::Client
@@ -32,9 +28,7 @@ describe Lemonway do
     end
 
     context 'when configuration is set' do
-      before do
-        Lemonway.configuration = { login: 'Login', password: 'Password' }
-      end
+      before { set_lemonway_configuration }
 
       it 'returns the Lemonway client instance' do
         expect(client).to be_a Lemonway::Client

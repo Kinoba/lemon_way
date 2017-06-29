@@ -1,7 +1,5 @@
 describe Lemonway::MoneyIn do
-  before do
-    Lemonway.configuration = { login: 'Login', password: 'Password' }
-  end
+  before { set_lemonway_configuration }
 
   describe '#money_in_web_init' do
     it 'calls the send request method with the money in web init parameters' do

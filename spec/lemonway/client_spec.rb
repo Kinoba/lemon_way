@@ -23,8 +23,18 @@ describe Lemonway::Client do
       end
     end
 
-    context 'with a password and a login parameter' do
-      let(:options) { { login: 'Lemon', password: 'Way', language: :en, sandbox: true } }
+    context 'without a company parameter' do
+      let(:options) { { login: 'Lemon', password: 'Way' } }
+
+      it 'raises a missing configuration error' do
+        expect { client }.to raise_error(Lemonway::Errors::MissingConfigurationError)
+      end
+    end
+
+    context 'with a login/password/company parameter' do
+      let(:options) do
+        { login: 'Lemon', password: 'Way', company: 'Lemonway', language: :en, sandbox: true }
+      end
         
       it 'sets the Lemonway client login' do
         expect(client.login).to eq 'Lemon'
@@ -32,6 +42,10 @@ describe Lemonway::Client do
 
       it 'sets the Lemonway client password' do
         expect(client.password).to eq 'Way'
+      end
+
+      it 'sets the Lemonway client company' do
+        expect(client.company).to eq 'Lemonway'
       end
 
       it 'sets the Lemonway client options' do
@@ -43,7 +57,7 @@ describe Lemonway::Client do
   describe '#send_request' do
     subject(:send_request) { client.send_request('GetWalletDetails', '1.1') }
     let(:client) { described_class.new(options) }
-    let(:options) { { login: 'Lemon', password: 'Way' } }
+    let(:options) { { login: 'Lemon', password: 'Way', company: 'Lemonway' } }
     let(:returned_body) { { d: { 'WALLET': { lemon: 'way' } } } }
 
     it 'sends a post request' do
@@ -55,7 +69,7 @@ describe Lemonway::Client do
     it 'sends the request with the correct url, headers and body' do
       expect(described_class).to \
         receive(:post).with(
-          "#{described_class::DIRECTKIT_URL}/GetWalletDetails",
+          "#{client.send(:directkit_url)}/GetWalletDetails",
           body: {
             p: {
               wlLogin: 'Lemon',
@@ -80,7 +94,7 @@ describe Lemonway::Client do
       it 'sends the request with the correct url, headers and body' do
         expect(described_class).to \
           receive(:post).with(
-            "#{described_class::DIRECTKIT_URL}/GetWallet",
+            "#{client.send(:directkit_url)}/GetWallet",
             body: {
               p: {
                 wlLogin: 'Lemon',

@@ -1,7 +1,5 @@
 describe Lemonway::Form do
-  before do
-    Lemonway.configuration = { login: 'Login', password: 'Password' }
-  end
+  before { set_lemonway_configuration }
 
   describe '#create' do
     it 'calls the send request method with the create payment form parameters' do
