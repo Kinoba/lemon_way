@@ -46,7 +46,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/AlexKt
 ## TO DO
 - DIRECTKIT_URL for production
 - Wallet IP & Wallet Ua
-- MoneyOut module
 - Improve configuration
 - Improve README / Wiki ?
 - Improve specific specs ?

@@ -26,7 +26,7 @@ module Lemonway
 
       @login = options[:login]
       @password = options[:password]
-      @options = options.delete_if { |k, v| %i(login password).include?(k) }
+      @options = options.delete_if { |k, _v| %i(login password).include?(k) }
     end
 
     def send_request(lw_method, version, params = {})
