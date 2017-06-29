@@ -22,6 +22,10 @@ module Lemonway
       def upload_file(params = {})
         Lemonway.client.send_request('UploadFile', '1.1', params)
       end
+
+      def transactions_history(params = {})
+        Lemonway.client.send_request('GetWalletTransHistory', '2.1', params)
+      end
     end
   end
 end
