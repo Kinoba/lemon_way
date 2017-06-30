@@ -1,7 +1,5 @@
 describe Lemonway::Wallet do
-  before do
-    Lemonway.configuration = { login: 'Login', password: 'Password' }
-  end
+  before { set_lemonway_configuration }
 
   describe '#get' do
     it 'calls the send request method with the get wallet details parameters' do

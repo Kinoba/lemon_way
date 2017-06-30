@@ -7,11 +7,12 @@ module Lemonway
   class Client
     include HTTParty
 
-    attr_reader :login, :password, :options
+    attr_reader :login, :password, :company, :options
 
-    DIRECTKIT_URL     = 'https://sandbox-api.lemonway.fr/mb/demo/dev/directkitjson2/Service.asmx'
-    DEFAULT_LANGUAGE  = 'fr'
-    DEFAULT_HEADERS   = {
+    DIRECTKIT_URL = 'https://sandbox-api.lemonway.fr/mb/{company_name}/{env}/directkitjson2/Service.asmx'
+    REQUIRED_CONFIGURATION = %i(login password company).freeze
+    DEFAULT_LANGUAGE = 'fr'
+    DEFAULT_HEADERS = {
       'Content-Type' => 'application/json; charset=utf-8',
       'Accept' => 'application/json',
       'Cache-Control' => 'no-cache',
@@ -22,11 +23,14 @@ module Lemonway
     debug_output $stdout
 
     def initialize(options = {})
-      raise Errors::MissingConfigurationError.new if options[:login].nil? || options[:password].nil?
+      if (options.keys & REQUIRED_CONFIGURATION).size != REQUIRED_CONFIGURATION.size
+        raise Errors::MissingConfigurationError.new
+      end
 
       @login = options[:login]
       @password = options[:password]
-      @options = options.delete_if { |k, _v| %i(login password).include?(k) }
+      @company = options[:company]
+      @options = options.delete_if { |k, _v| REQUIRED_CONFIGURATION.include?(k) }
     end
 
     def send_request(lw_method, version, params = {})
@@ -37,9 +41,15 @@ module Lemonway
     private
 
     def perform_request(lw_method, version, params)
-      self.class.post([DIRECTKIT_URL, lw_method].join('/'),
+      self.class.post([directkit_url, lw_method].join('/'),
                       headers: DEFAULT_HEADERS,
                       body: { p: request_body(version, params) }.to_json)
+    end
+
+    def directkit_url
+      DIRECTKIT_URL
+        .sub('{company_name}', @company)
+        .sub('{env}', @options[:sandbox] ? 'dev' : 'prod')
     end
 
     def request_body(version, params)
