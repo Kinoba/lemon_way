@@ -2,6 +2,7 @@ require 'lemonway/version'
 require 'lemonway/client'
 require 'lemonway/wallet'
 require 'lemonway/money_in'
+require 'lemonway/money_out'
 require 'lemonway/form'
 
 module Lemonway
