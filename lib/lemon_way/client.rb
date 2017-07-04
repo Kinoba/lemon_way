@@ -62,8 +62,8 @@ module LemonWay
         wlPass: @password,
         language: @options[:language] || DEFAULT_LANGUAGE,
         version: version,
-        walletIp: '127.0.0.1',
-        walletUa: 'User-agent'
+        walletIp: @options[:sandbox] ? '127.0.0.1' : RequestStore[:lemon_way][:ip],
+        walletUa: @options[:sandbox] ? 'User-agent' : RequestStore[:lemon_way][:user_agent]
       }.merge(params)
     end
   end
