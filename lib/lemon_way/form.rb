@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'lemon_way/errors/form'
 
 module LemonWay

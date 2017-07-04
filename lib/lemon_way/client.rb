@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'lemon_way/errors/client'
 require 'lemon_way/response_adapter'
 require 'json'
@@ -9,15 +11,17 @@ module LemonWay
 
     attr_reader :login, :password, :company, :options
 
-    DIRECTKIT_URL = 'https://sandbox-api.lemonway.fr/mb/{company_name}/{env}/directkitjson2/Service.asmx'
-    REQUIRED_CONFIGURATION = %i(login password company).freeze
-    DEFAULT_LANGUAGE = 'fr'
+    DIRECTKIT_URL = \
+      'https://sandbox-api.lemonway.fr/mb/{company_name}/{env}/directkitjson2/Service.asmx'.freeze
+
+    REQUIRED_CONFIGURATION = %i[login password company].freeze
+    DEFAULT_LANGUAGE = 'fr'.freeze
     DEFAULT_HEADERS = {
       'Content-Type' => 'application/json; charset=utf-8',
       'Accept' => 'application/json',
       'Cache-Control' => 'no-cache',
       'Pragma' => 'no-cache'
-    }
+    }.freeze
 
     base_uri DIRECTKIT_URL
     debug_output $stdout

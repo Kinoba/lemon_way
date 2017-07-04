@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe LemonWay do
   it 'has a version number' do
     expect(LemonWay::VERSION).not_to be nil

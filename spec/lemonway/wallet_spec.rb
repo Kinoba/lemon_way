@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 describe LemonWay::Wallet do
   before { set_lemonway_configuration }
 
   describe '#get' do
     it 'calls the send request method with the get wallet details parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('GetWalletDetails', '2.0', { wallet: 'wallet_id' })
+        receive(:send_request).with('GetWalletDetails', '2.0', wallet: 'wallet_id')
       described_class.get(wallet: 'wallet_id')
     end
 
@@ -21,7 +23,7 @@ describe LemonWay::Wallet do
   describe '#register' do
     it 'calls the send request method with the register wallet parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('RegisterWallet', '1.1', { wallet: 'wallet_id' })
+        receive(:send_request).with('RegisterWallet', '1.1', wallet: 'wallet_id')
       described_class.register(wallet: 'wallet_id')
     end
 
@@ -37,7 +39,7 @@ describe LemonWay::Wallet do
   describe '#update' do
     it 'calls the send request method with the update wallet details parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('UpdateWalletDetails', '1.0', { wallet: 'wallet_id' })
+        receive(:send_request).with('UpdateWalletDetails', '1.0', wallet: 'wallet_id')
       described_class.update(wallet: 'wallet_id')
     end
 
@@ -54,7 +56,7 @@ describe LemonWay::Wallet do
   describe '#update_status' do
     it 'calls the send request method with the update wallet details parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('UpdateWalletStatus', '1.0', { wallet: 'wallet_id' })
+        receive(:send_request).with('UpdateWalletStatus', '1.0', wallet: 'wallet_id')
       described_class.update_status(wallet: 'wallet_id')
     end
 
@@ -62,7 +64,8 @@ describe LemonWay::Wallet do
       before { stub_error_lemonway_request('UpdateWalletStatus') }
 
       it 'raises the update status error' do
-        expect { described_class.update_status }.to raise_error(LemonWay::Errors::UpdateWalletStatusError)
+        expect { described_class.update_status }.to \
+          raise_error(LemonWay::Errors::UpdateWalletStatusError)
       end
     end
   end
@@ -70,7 +73,7 @@ describe LemonWay::Wallet do
   describe '#upload_file' do
     it 'calls the send request method with the upload file parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('UploadFile', '1.1', { wallet: 'wallet_id' })
+        receive(:send_request).with('UploadFile', '1.1', wallet: 'wallet_id')
       described_class.upload_file(wallet: 'wallet_id')
     end
 
@@ -86,7 +89,7 @@ describe LemonWay::Wallet do
   describe '#transactions_history' do
     it 'calls the send request method with the upload file parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('GetWalletTransHistory', '2.1', { wallet: 'wallet_id' })
+        receive(:send_request).with('GetWalletTransHistory', '2.1', wallet: 'wallet_id')
       described_class.transactions_history(wallet: 'wallet_id')
     end
 

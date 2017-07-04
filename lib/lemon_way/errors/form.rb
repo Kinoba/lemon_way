@@ -1,28 +1,30 @@
+# frozen_string_literal: true
+
 require 'lemon_way/error'
 
 module LemonWay
   module Errors
-    class CreatePaymentFormError < LemonwayRubyError
+    class CreatePaymentFormError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-in-credit-a-wallet/payment-form/createpaymentform-create-payment-form
-        }, error)
+        ), error)
       end
     end
 
-    class GetCompletedPaymentFormError < LemonwayRubyError
+    class GetCompletedPaymentFormError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-in-credit-a-wallet/payment-form/getcompletedpaymentform-get-details-of-a-completed-payment-form
-        }, error)
+        ), error)
       end
     end
 
-    class DisablePaymentFormError < LemonwayRubyError
+    class DisablePaymentFormError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-in-credit-a-wallet/payment-form/disablepaymentform-disable-a-payment-form
-        }, error)
+        ), error)
       end
     end
   end

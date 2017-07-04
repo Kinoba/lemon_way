@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe LemonWay::Client do
   describe '#initialize' do
     subject(:client) { described_class.new(options) }
@@ -35,7 +37,7 @@ describe LemonWay::Client do
       let(:options) do
         { login: 'Lemon', password: 'Way', company: 'LemonWay', language: :en, sandbox: true }
       end
-        
+
       it 'sets the LemonWay client login' do
         expect(client.login).to eq 'Lemon'
       end
@@ -58,7 +60,7 @@ describe LemonWay::Client do
     subject(:send_request) { client.send_request('GetWalletDetails', '1.1') }
     let(:client) { described_class.new(options) }
     let(:options) { { login: 'Lemon', password: 'Way', company: 'LemonWay' } }
-    let(:returned_body) { { d: { 'WALLET': { lemon: 'way' } } } }
+    let(:returned_body) { { d: { 'WALLET' => { lemon: 'way' } } } }
 
     it 'sends a post request' do
       expect(described_class).to \

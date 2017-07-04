@@ -1,52 +1,54 @@
+# frozen_string_literal: true
+
 require 'lemon_way/error'
 
 module LemonWay
   module Errors
-    class GetWalletDetailsError < LemonwayRubyError
+    class GetWalletDetailsError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/getwalletdetails-getting-detailed-wallet-data
-        }, error)
+        ), error)
       end
     end
 
-    class RegisterWalletError < LemonwayRubyError
+    class RegisterWalletError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/registerwallet-creating-a-new-wallet
-        }, error)
+        ), error)
       end
     end
 
-    class UpdateWalletDetailsError < LemonwayRubyError
+    class UpdateWalletDetailsError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/updatewalletdetails-update-wallet-data
-        }, error)
+        ), error)
       end
     end
 
-    class UpdateWalletStatusError < LemonwayRubyError
+    class UpdateWalletStatusError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/updatewalletstatus
-        }, error)
+        ), error)
       end
     end
 
-    class UploadFileError < LemonwayRubyError
+    class UploadFileError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/uploadfile-document-upload-for-kyc
-        }, error)
+        ), error)
       end
     end
 
-    class GetWalletTransHistoryError < LemonwayRubyError
+    class GetWalletTransHistoryError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/getwallettranshistory-get-list-of-all-transactions-of-a-wallet
-        }, error)
+        ), error)
       end
     end
   end

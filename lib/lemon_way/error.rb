@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module LemonWay
-  class LemonwayRubyError < StandardError
+  class LemonWayError < StandardError
     def initialize(message = '', error = {})
-      super(%{
+      super(%(
         #{error_informations(error)}
         #{message}
-      })
+      ))
     end
 
     private
@@ -12,10 +14,10 @@ module LemonWay
     def error_informations(error)
       return if error.blank?
 
-      %{
+      %(
         Code: #{error[:code]}
         Message: #{error[:msg]}
-      }
+      )
     end
   end
 end

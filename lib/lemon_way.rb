@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'lemon_way/version'
 require 'lemon_way/client'
 require 'lemon_way/wallet'
@@ -9,22 +11,22 @@ module LemonWay
   @@client = nil
   @@configuration = {}
 
-  def LemonWay.init
+  def self.init
     @@client = Client.new(@@configuration)
   end
 
-  def LemonWay.reset
+  def self.reset
     @@client = nil
     @@configuration = {}
   end
 
-  def LemonWay.configuration=(configuration)
+  def self.configuration=(configuration)
     @@configuration = configuration
 
     LemonWay.init
   end
 
-  def LemonWay.client
+  def self.client
     @@client || LemonWay.init
   end
 end

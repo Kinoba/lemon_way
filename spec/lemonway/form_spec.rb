@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 describe LemonWay::Form do
   before { set_lemonway_configuration }
 
   describe '#create' do
     it 'calls the send request method with the create payment form parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('CreatePaymentForm', '1.0', { wallet: 'wallet_id' })
+        receive(:send_request).with('CreatePaymentForm', '1.0', wallet: 'wallet_id')
       described_class.create(wallet: 'wallet_id')
     end
 
@@ -21,7 +23,7 @@ describe LemonWay::Form do
   describe '#get' do
     it 'calls the send request method with the get payment form parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('GetCompletedPaymentForm', '1.0', { wallet: 'wallet_id' })
+        receive(:send_request).with('GetCompletedPaymentForm', '1.0', wallet: 'wallet_id')
       described_class.get(wallet: 'wallet_id')
     end
 
@@ -38,7 +40,7 @@ describe LemonWay::Form do
   describe '#disable' do
     it 'calls the send request method with the disable payment form parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('DisablePaymentForm', '1.0', { wallet: 'wallet_id' })
+        receive(:send_request).with('DisablePaymentForm', '1.0', wallet: 'wallet_id')
       described_class.disable(wallet: 'wallet_id')
     end
 

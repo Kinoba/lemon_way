@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ostruct'
 require 'active_support/all'
 
@@ -6,7 +8,7 @@ module LemonWay
     def initialize(method, response)
       response = JSON.parse(response.body)['d'].deep_transform_keys { |key| key.underscore.to_sym }
 
-      raise Errors::const_get("#{method}Error").new(response[:e]) if response[:e].present?
+      raise error_class(method).new(response[:e]) if response[:e].present?
 
       super(values_for(response))
     end
@@ -18,7 +20,11 @@ module LemonWay
     end
 
     def response_keys
-      %i(wallet moneyinweb trans form iban_register)
+      %i[wallet moneyinweb trans form iban_register]
+    end
+
+    def error_class(method)
+      Errors.const_get("#{method}Error")
     end
   end
 end
