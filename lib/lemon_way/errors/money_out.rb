@@ -1,8 +1,8 @@
-require 'lemonway/error'
+require 'lemon_way/error'
 
-module Lemonway
+module LemonWay
   module Errors
-    class RegisterIBANError < LemonwayError
+    class RegisterIBANError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-out-debit-a-wallet-and-credit-a-bank-account/registeriban-link-an-iban-to-a-wallet
@@ -10,7 +10,7 @@ module Lemonway
       end
     end
 
-    class MoneyOutError < LemonwayError
+    class MoneyOutError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-out-debit-a-wallet-and-credit-a-bank-account/moneyout-external-fund-transfer-from-a-wallet-to-a-bank-account
@@ -18,7 +18,7 @@ module Lemonway
       end
     end
 
-    class GetMoneyOutTransDetailsError < LemonwayError
+    class GetMoneyOutTransDetailsError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-out-debit-a-wallet-and-credit-a-bank-account/getmoneyouttransdetails-looking-for-a-money-out

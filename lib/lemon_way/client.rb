@@ -1,9 +1,9 @@
-require 'lemonway/errors/client'
-require 'lemonway/response_adapter'
+require 'lemon_way/errors/client'
+require 'lemon_way/response_adapter'
 require 'json'
 require 'httparty'
 
-module Lemonway
+module LemonWay
   class Client
     include HTTParty
 

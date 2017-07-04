@@ -6,5 +6,5 @@ RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
 
 task :console do
-  exec 'irb -r lemonway -I ./lib'
+  exec 'irb -r lemon_way -I ./lib'
 end

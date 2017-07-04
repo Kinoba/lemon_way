@@ -1,7 +1,7 @@
 require 'ostruct'
 require 'active_support/all'
 
-module Lemonway
+module LemonWay
   class ResponseAdapter < OpenStruct
     def initialize(method, response)
       response = JSON.parse(response.body)['d'].deep_transform_keys { |key| key.underscore.to_sym }

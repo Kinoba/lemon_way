@@ -1,8 +1,8 @@
-require 'lemonway/error'
+require 'lemon_way/error'
 
-module Lemonway
+module LemonWay
   module Errors
-    class GetWalletDetailsError < LemonwayError
+    class GetWalletDetailsError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/getwalletdetails-getting-detailed-wallet-data
@@ -10,7 +10,7 @@ module Lemonway
       end
     end
 
-    class RegisterWalletError < LemonwayError
+    class RegisterWalletError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/registerwallet-creating-a-new-wallet
@@ -18,7 +18,7 @@ module Lemonway
       end
     end
 
-    class UpdateWalletDetailsError < LemonwayError
+    class UpdateWalletDetailsError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/updatewalletdetails-update-wallet-data
@@ -26,7 +26,7 @@ module Lemonway
       end
     end
 
-    class UpdateWalletStatusError < LemonwayError
+    class UpdateWalletStatusError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/updatewalletstatus
@@ -34,7 +34,7 @@ module Lemonway
       end
     end
 
-    class UploadFileError < LemonwayError
+    class UploadFileError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/uploadfile-document-upload-for-kyc
@@ -42,7 +42,7 @@ module Lemonway
       end
     end
 
-    class GetWalletTransHistoryError < LemonwayError
+    class GetWalletTransHistoryError < LemonwayRubyError
       def initialize(error)
         super(%{
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/getwallettranshistory-get-list-of-all-transactions-of-a-wallet

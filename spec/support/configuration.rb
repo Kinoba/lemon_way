@@ -1,3 +1,3 @@
 def set_lemonway_configuration
-  Lemonway.configuration = { login: 'Login', password: 'Password', company: 'Lemonway' }
+  LemonWay.configuration = { login: 'Login', password: 'Password', company: 'LemonWay' }
 end

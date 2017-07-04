@@ -1,37 +1,37 @@
-describe Lemonway do
+describe LemonWay do
   it 'has a version number' do
-    expect(Lemonway::VERSION).not_to be nil
+    expect(LemonWay::VERSION).not_to be nil
   end
 
   describe '#reset' do
     before { set_lemonway_configuration }
 
-    it 'resets the Lemonway client' do
-      Lemonway.reset
-      expect { Lemonway.client }.to raise_error(Lemonway::Errors::MissingConfigurationError)
+    it 'resets the LemonWay client' do
+      LemonWay.reset
+      expect { LemonWay.client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
     end
   end
 
   describe '#configuration=' do
     before { set_lemonway_configuration }
 
-    it 'creates the Lemonway client' do
-      expect(Lemonway.client).to be_a Lemonway::Client
+    it 'creates the LemonWay client' do
+      expect(LemonWay.client).to be_a LemonWay::Client
     end
   end
 
   describe '#client' do
-    subject(:client) { Lemonway.client }
+    subject(:client) { LemonWay.client }
 
     it 'raises a missing configuration error' do
-      expect { client }.to raise_error(Lemonway::Errors::MissingConfigurationError)
+      expect { client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
     end
 
     context 'when configuration is set' do
       before { set_lemonway_configuration }
 
-      it 'returns the Lemonway client instance' do
-        expect(client).to be_a Lemonway::Client
+      it 'returns the LemonWay client instance' do
+        expect(client).to be_a LemonWay::Client
       end
     end
   end

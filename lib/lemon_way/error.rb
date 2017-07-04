@@ -1,5 +1,5 @@
-module Lemonway
-  class LemonwayError < StandardError
+module LemonWay
+  class LemonwayRubyError < StandardError
     def initialize(message = '', error = {})
       super(%{
         #{error_informations(error)}
