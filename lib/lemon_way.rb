@@ -6,6 +6,8 @@ require 'lemon_way/wallet'
 require 'lemon_way/money_in'
 require 'lemon_way/money_out'
 require 'lemon_way/form'
+require 'lemon_way/middleware'
+require 'lemon_way/railtie' if defined?(Rails)
 
 module LemonWay
   @@client = nil
