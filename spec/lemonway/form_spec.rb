@@ -1,10 +1,12 @@
-describe Lemonway::Form do
+# frozen_string_literal: true
+
+describe LemonWay::Form do
   before { set_lemonway_configuration }
 
   describe '#create' do
     it 'calls the send request method with the create payment form parameters' do
-      expect(Lemonway.client).to \
-        receive(:send_request).with('CreatePaymentForm', '1.0', { wallet: 'wallet_id' })
+      expect(LemonWay.client).to \
+        receive(:send_request).with('CreatePaymentForm', '1.0', wallet: 'wallet_id')
       described_class.create(wallet: 'wallet_id')
     end
 
@@ -13,15 +15,15 @@ describe Lemonway::Form do
 
       it 'raises the create payment form error' do
         expect { described_class.create }.to \
-          raise_error(Lemonway::Errors::CreatePaymentFormError)
+          raise_error(LemonWay::Errors::CreatePaymentFormError)
       end
     end
   end
 
   describe '#get' do
     it 'calls the send request method with the get payment form parameters' do
-      expect(Lemonway.client).to \
-        receive(:send_request).with('GetCompletedPaymentForm', '1.0', { wallet: 'wallet_id' })
+      expect(LemonWay.client).to \
+        receive(:send_request).with('GetCompletedPaymentForm', '1.0', wallet: 'wallet_id')
       described_class.get(wallet: 'wallet_id')
     end
 
@@ -30,15 +32,15 @@ describe Lemonway::Form do
 
       it 'raises the get payment form error' do
         expect { described_class.get }.to \
-          raise_error(Lemonway::Errors::GetCompletedPaymentFormError)
+          raise_error(LemonWay::Errors::GetCompletedPaymentFormError)
       end
     end
   end
 
   describe '#disable' do
     it 'calls the send request method with the disable payment form parameters' do
-      expect(Lemonway.client).to \
-        receive(:send_request).with('DisablePaymentForm', '1.0', { wallet: 'wallet_id' })
+      expect(LemonWay.client).to \
+        receive(:send_request).with('DisablePaymentForm', '1.0', wallet: 'wallet_id')
       described_class.disable(wallet: 'wallet_id')
     end
 
@@ -47,7 +49,7 @@ describe Lemonway::Form do
 
       it 'raises the disable payment form error' do
         expect { described_class.disable }.to \
-          raise_error(Lemonway::Errors::DisablePaymentFormError)
+          raise_error(LemonWay::Errors::DisablePaymentFormError)
       end
     end
   end

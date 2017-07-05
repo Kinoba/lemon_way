@@ -1,10 +1,12 @@
-describe Lemonway::MoneyOut do
+# frozen_string_literal: true
+
+describe LemonWay::MoneyOut do
   before { set_lemonway_configuration }
 
   describe '#register_iban' do
     it 'calls the send request method with the register iban parameters' do
-      expect(Lemonway.client).to \
-        receive(:send_request).with('RegisterIBAN', '1.1', { wallet: 'wallet_id' })
+      expect(LemonWay.client).to \
+        receive(:send_request).with('RegisterIBAN', '1.1', wallet: 'wallet_id')
       described_class.register_iban(wallet: 'wallet_id')
     end
 
@@ -13,15 +15,15 @@ describe Lemonway::MoneyOut do
 
       it 'raises the register iban error' do
         expect { described_class.register_iban }.to \
-          raise_error(Lemonway::Errors::RegisterIBANError)
+          raise_error(LemonWay::Errors::RegisterIBANError)
       end
     end
   end
 
   describe '#transfer' do
     it 'calls the send request method with the transfer parameters' do
-      expect(Lemonway.client).to \
-        receive(:send_request).with('MoneyOut', '1.3', { wallet: 'wallet_id' })
+      expect(LemonWay.client).to \
+        receive(:send_request).with('MoneyOut', '1.3', wallet: 'wallet_id')
       described_class.transfer(wallet: 'wallet_id')
     end
 
@@ -30,15 +32,15 @@ describe Lemonway::MoneyOut do
 
       it 'raises the transfer error' do
         expect { described_class.transfer }.to \
-          raise_error(Lemonway::Errors::MoneyOutError)
+          raise_error(LemonWay::Errors::MoneyOutError)
       end
     end
   end
 
   describe '#transfer_details' do
     it 'calls the send request method with the transfer details parameters' do
-      expect(Lemonway.client).to \
-        receive(:send_request).with('GetMoneyOutTransDetails', '1.4', { wallet: 'wallet_id' })
+      expect(LemonWay.client).to \
+        receive(:send_request).with('GetMoneyOutTransDetails', '1.4', wallet: 'wallet_id')
       described_class.transfer_details(wallet: 'wallet_id')
     end
 
@@ -47,7 +49,7 @@ describe Lemonway::MoneyOut do
 
       it 'raises the transfer details error' do
         expect { described_class.transfer_details }.to \
-          raise_error(Lemonway::Errors::GetMoneyOutTransDetailsError)
+          raise_error(LemonWay::Errors::GetMoneyOutTransDetailsError)
       end
     end
   end

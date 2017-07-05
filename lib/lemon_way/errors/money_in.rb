@@ -1,28 +1,30 @@
-require 'lemonway/error'
+# frozen_string_literal: true
 
-module Lemonway
+require 'lemon_way/error'
+
+module LemonWay
   module Errors
-    class MoneyInWebInitError < LemonwayError
+    class MoneyInWebInitError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-in-credit-a-wallet/by-card/moneyinwebinit-indirect-mode-money-in-by-card-crediting-a-wallet
-        }, error)
+        ), error)
       end
     end
 
-    class GetMoneyInTransDetailsError < LemonwayError
+    class GetMoneyInTransDetailsError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-in-credit-a-wallet/getmoneyintransdetails-looking-for-a-money-in
-        }, error)
+        ), error)
       end
     end
 
-    class MoneyInValidateError < LemonwayError
+    class MoneyInValidateError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/money-in-credit-a-wallet/by-card/moneyinvalidate-validation-of-a-money-in-deffered-payment-only
-        }, error)
+        ), error)
       end
     end
   end

@@ -1,10 +1,10 @@
-# Lemonway
+# LemonWay
 
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/AlexKtf/lemonway-ruby)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/MesPetitsArtistes/lemon_way)
 
-[![CircleCI](https://circleci.com/gh/AlexKtf/lemonway-ruby/tree/master.svg?style=svg)](https://circleci.com/gh/AlexKtf/lemonway-ruby/tree/master)
+[![CircleCI](https://circleci.com/gh/MesPetitsArtistes/lemon_way/tree/master.svg?style=svg)](https://circleci.com/gh/MesPetitsArtistes/lemon_way/tree/master)
 
-This gem is a client for the Lemonway API.
+This gem is a client for the LemonWay API.
 
 IMPORTANT : This gem is still in development and cannot be used in production at the moment.
 
@@ -13,7 +13,7 @@ IMPORTANT : This gem is still in development and cannot be used in production at
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'lemonway-ruby'
+gem 'lemon_way'
 ```
 
 And then execute:
@@ -22,16 +22,9 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install lemonway-ruby
+    $ gem install lemon_way
 
 ## Configuration:
-
-```ruby
-Lemonway.configuration = { login: ENV['LEMONWAY_LOGIN'], password: ENV['LEMONWAY_PASSWORD'] }
-# optional options => [:sandbox, :language]
-```
-
-If you are using Rails, you can do this in : `config/initializer/lemonway.rb`
 
 ## Development
 
@@ -41,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/AlexKtf/lemonway-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/MesPetitsArtistes/lemon_way. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## TO DO
 - Wallet IP & Wallet Ua

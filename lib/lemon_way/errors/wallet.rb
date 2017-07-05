@@ -1,52 +1,54 @@
-require 'lemonway/error'
+# frozen_string_literal: true
 
-module Lemonway
+require 'lemon_way/error'
+
+module LemonWay
   module Errors
-    class GetWalletDetailsError < LemonwayError
+    class GetWalletDetailsError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/getwalletdetails-getting-detailed-wallet-data
-        }, error)
+        ), error)
       end
     end
 
-    class RegisterWalletError < LemonwayError
+    class RegisterWalletError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/registerwallet-creating-a-new-wallet
-        }, error)
+        ), error)
       end
     end
 
-    class UpdateWalletDetailsError < LemonwayError
+    class UpdateWalletDetailsError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/updatewalletdetails-update-wallet-data
-        }, error)
+        ), error)
       end
     end
 
-    class UpdateWalletStatusError < LemonwayError
+    class UpdateWalletStatusError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/updatewalletstatus
-        }, error)
+        ), error)
       end
     end
 
-    class UploadFileError < LemonwayError
+    class UploadFileError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/uploadfile-document-upload-for-kyc
-        }, error)
+        ), error)
       end
     end
 
-    class GetWalletTransHistoryError < LemonwayError
+    class GetWalletTransHistoryError < LemonWayError
       def initialize(error)
-        super(%{
+        super(%(
         Documentation: http://documentation.lemonway.fr/api-en/directkit/manage-wallets/getwallettranshistory-get-list-of-all-transactions-of-a-wallet
-        }, error)
+        ), error)
       end
     end
   end
