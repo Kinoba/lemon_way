@@ -8,6 +8,8 @@ This gem is a client for the LemonWay API.
 
 IMPORTANT : This gem is still in development and cannot be used in production at the moment.
 
+First, you need to sign up and own a Lemonway account.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -26,18 +28,68 @@ Or install it yourself as:
 
 ## Configuration:
 
-## Development
+There are **3 required** paremeters => login / password / company
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+There are 2 optionals parameters => sandbox / language
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+If you work with **Rails** :
+```ruby
+# config/initializers/lemon_way.rb
+lemon_way_configuration = {
+  login: ENV['LEMONWAY_LOGIN'],
+  password: ENV['LEMONWAY_PASSWORD'],
+  company: ENV['LEMONWAY_COMPANY']
+}
+lemon_way_configuration.merge!(sandbox: true) unless Rails.env.production?
+LemonWay.configuration = lemon_way_configuration
+```
 
-## Contributing
+## Usage
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/MesPetitsArtistes/lemon_way. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+### Wallet
+
+This module allows you to manage all your wallets:
+
+* Wallet creation
+* Wallet details modification
+* Send KYC documents to Lemon Way
+* Check wallet and KYC document status that have changed since a given date
+* Check wallet details and balance
+* Check balances that have changed since a given date
+* Get the list of all transactions made on a wallet
+* Wallet status modification (optional)
+
+Details of the [Wallet module](https://github.com/MesPetitsArtistes/lemon_way/wiki/Wallet).
+
+### MoneyIn
+
+This module allows you credit a wallet with the following means of payment:
+
+* By card
+
+Details of the [MoneyIn module](https://github.com/MesPetitsArtistes/lemon_way/wiki/MoneyIn).
+
+### Form
+
+This module allows you to manage form payment:
+
+* Create a payment form
+* Retrieve a payment form
+* Disable a payment form
+
+Details of the [Form module](https://github.com/MesPetitsArtistes/lemon_way/wiki/Form).
+
+### MoneyOut
+
+This module allows you to prepare/debit a wallet to credit a bank account:
+
+* Register an IBAN
+* Transfer fund
+* Get details on a transfer
+
+Details of the [MoneyOut module](https://github.com/MesPetitsArtistes/lemon_way/wiki/MoneyOut).
 
 ## TO DO
-- Improve README / Wiki ?
 - Improve specific specs ?
 
 ## License
