@@ -41,6 +41,7 @@ lemon_way_configuration = {
   company: ENV['LEMONWAY_COMPANY']
 }
 lemon_way_configuration.merge!(sandbox: true) unless Rails.env.production?
+
 LemonWay.configuration = lemon_way_configuration
 ```
 
@@ -57,7 +58,6 @@ This module allows you to manage all your wallets:
 * Check wallet details and balance
 * Check balances that have changed since a given date
 * Get the list of all transactions made on a wallet
-* Wallet status modification (optional)
 
 Details of the [Wallet module](https://github.com/MesPetitsArtistes/lemon_way/wiki/Wallet).
 
@@ -91,6 +91,8 @@ Details of the [MoneyOut module](https://github.com/MesPetitsArtistes/lemon_way/
 
 ## TO DO
 - Improve specific specs ?
+- Generate automatically Wallet and Form ID on create if parameter is missing
+- Helper to retrieve a payment form
 
 ## License
 
