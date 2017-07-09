@@ -92,7 +92,6 @@ Details of the [MoneyOut module](https://github.com/MesPetitsArtistes/lemon_way/
 ## TO DO
 - Improve specific specs ?
 - Generate automatically Wallet and Form ID on create if parameter is missing
-- Helper to retrieve a payment form
 
 ## License
 
