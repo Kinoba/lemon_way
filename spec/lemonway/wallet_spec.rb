@@ -7,7 +7,7 @@ describe LemonWay::Wallet do
     it 'calls the send request method with the get wallet details parameters' do
       expect(LemonWay.client).to \
         receive(:send_request).with('GetWalletDetails', '2.0', wallet: 'wallet_id')
-      described_class.get(wallet: 'wallet_id')
+      described_class.get(id: 'wallet_id')
     end
 
     context 'with wrong parameters' do
@@ -23,15 +23,15 @@ describe LemonWay::Wallet do
   describe '#register' do
     it 'calls the send request method with the register wallet parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('RegisterWallet', '1.1', wallet: 'wallet_id', id: '123')
-      described_class.register(wallet: 'wallet_id', id: '123')
+        receive(:send_request).with('RegisterWallet', '1.1', wallet: 'wallet_id')
+      described_class.register(id: 'wallet_id')
     end
 
     it 'calls the send request method with the register wallet parameters and automatic ID' do
       allow(LemonWay::Generators::Id).to receive(:generate).and_return('456')
       expect(LemonWay.client).to \
-        receive(:send_request).with('RegisterWallet', '1.1', wallet: 'wallet_id', id: '456')
-      described_class.register(wallet: 'wallet_id')
+        receive(:send_request).with('RegisterWallet', '1.1', wallet: '456')
+      described_class.register
     end
 
     context 'with wrong parameters' do
@@ -47,7 +47,7 @@ describe LemonWay::Wallet do
     it 'calls the send request method with the update wallet details parameters' do
       expect(LemonWay.client).to \
         receive(:send_request).with('UpdateWalletDetails', '1.0', wallet: 'wallet_id')
-      described_class.update(wallet: 'wallet_id')
+      described_class.update(id: 'wallet_id')
     end
 
     context 'with wrong parameters' do
@@ -64,7 +64,7 @@ describe LemonWay::Wallet do
     it 'calls the send request method with the update wallet details parameters' do
       expect(LemonWay.client).to \
         receive(:send_request).with('UpdateWalletStatus', '1.0', wallet: 'wallet_id')
-      described_class.update_status(wallet: 'wallet_id')
+      described_class.update_status(id: 'wallet_id')
     end
 
     context 'with wrong parameters' do
@@ -81,7 +81,7 @@ describe LemonWay::Wallet do
     it 'calls the send request method with the upload file parameters' do
       expect(LemonWay.client).to \
         receive(:send_request).with('UploadFile', '1.1', wallet: 'wallet_id')
-      described_class.upload_file(wallet: 'wallet_id')
+      described_class.upload_file(id: 'wallet_id')
     end
 
     context 'with wrong parameters' do
@@ -97,7 +97,7 @@ describe LemonWay::Wallet do
     it 'calls the send request method with the upload file parameters' do
       expect(LemonWay.client).to \
         receive(:send_request).with('GetWalletTransHistory', '2.1', wallet: 'wallet_id')
-      described_class.transactions_history(wallet: 'wallet_id')
+      described_class.transactions_history(id: 'wallet_id')
     end
 
     context 'with wrong parameters' do
