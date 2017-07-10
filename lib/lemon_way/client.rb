@@ -9,7 +9,7 @@ module LemonWay
   class Client
     include HTTParty
 
-    attr_reader :login, :password, :company, :options
+    attr_reader :login, :password, :company, :env, :options
 
     DIRECTKIT_URL = \
       'https://sandbox-api.lemonway.fr/mb/{company_name}/{env}/directkitjson2/Service.asmx'.freeze
@@ -34,6 +34,7 @@ module LemonWay
       @login = options[:login]
       @password = options[:password]
       @company = options[:company]
+      @env = options[:sandbox] ? 'dev' : 'prod'
       @options = options.delete_if { |k, _v| REQUIRED_CONFIGURATION.include?(k) }
     end
 
@@ -53,7 +54,7 @@ module LemonWay
     def directkit_url
       DIRECTKIT_URL
         .sub('{company_name}', @company)
-        .sub('{env}', @options[:sandbox] ? 'dev' : 'prod')
+        .sub('{env}', @env)
     end
 
     def request_body(version, params)
