@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'lemon_way/errors/wallet'
+require 'lemon_way/generators/id'
 
 module LemonWay
   class Wallet
@@ -10,6 +11,7 @@ module LemonWay
       end
 
       def register(params = {})
+        params[:id] ||= LemonWay::Generators::Id.generate
         LemonWay.client.send_request('RegisterWallet', '1.1', params)
       end
 
