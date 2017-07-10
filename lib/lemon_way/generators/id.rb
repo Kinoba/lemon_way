@@ -4,8 +4,8 @@ module LemonWay
   module Generators
     class Id
       class << self
-        def generate
-          rand(10**20).to_s
+        def generate(length: 20)
+          rand(10**length).to_s
         end
       end
     end

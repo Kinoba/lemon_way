@@ -6,7 +6,15 @@ describe LemonWay::Form do
   describe '#create' do
     it 'calls the send request method with the create payment form parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('CreatePaymentForm', '1.0', wallet: 'wallet_id')
+        receive(:send_request)
+          .with('CreatePaymentForm', '1.0', wallet: 'wallet_id', id: '123', optId: '123')
+      described_class.create(wallet: 'wallet_id', id: '123')
+    end
+
+    it 'calls the send request method with the create payment form parameters and automatic id' do
+      allow(LemonWay::Generators::Id).to receive(:generate).with(length: 60).and_return('456')
+      expect(LemonWay.client).to \
+        receive(:send_request).with('CreatePaymentForm', '1.0', wallet: 'wallet_id', optId: '456')
       described_class.create(wallet: 'wallet_id')
     end
 

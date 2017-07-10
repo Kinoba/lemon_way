@@ -6,6 +6,7 @@ module LemonWay
   class Form
     class << self
       def create(params = {})
+        params[:optId] = params[:id] || LemonWay::Generators::Id.generate(length: 60)
         LemonWay.client.send_request('CreatePaymentForm', '1.0', params)
       end
 
