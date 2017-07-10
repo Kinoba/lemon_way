@@ -23,7 +23,14 @@ describe LemonWay::Wallet do
   describe '#register' do
     it 'calls the send request method with the register wallet parameters' do
       expect(LemonWay.client).to \
-        receive(:send_request).with('RegisterWallet', '1.1', wallet: 'wallet_id')
+        receive(:send_request).with('RegisterWallet', '1.1', wallet: 'wallet_id', id: '123')
+      described_class.register(wallet: 'wallet_id', id: '123')
+    end
+
+    it 'calls the send request method with the register wallet parameters and automatic ID' do
+      allow(LemonWay::Generators::Id).to receive(:generate).and_return('456')
+      expect(LemonWay.client).to \
+        receive(:send_request).with('RegisterWallet', '1.1', wallet: 'wallet_id', id: '456')
       described_class.register(wallet: 'wallet_id')
     end
 
