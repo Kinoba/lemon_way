@@ -6,10 +6,12 @@ module LemonWay
   class MoneyOut
     class << self
       def register_iban(params = {})
+        params[:wallet] = params.delete(:id)
         LemonWay.client.send_request('RegisterIBAN', '1.1', params)
       end
 
       def transfer(params = {})
+        params[:wallet] = params.delete(:id)
         LemonWay.client.send_request('MoneyOut', '1.3', params)
       end
 

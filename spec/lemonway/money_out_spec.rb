@@ -7,7 +7,7 @@ describe LemonWay::MoneyOut do
     it 'calls the send request method with the register iban parameters' do
       expect(LemonWay.client).to \
         receive(:send_request).with('RegisterIBAN', '1.1', wallet: 'wallet_id')
-      described_class.register_iban(wallet: 'wallet_id')
+      described_class.register_iban(id: 'wallet_id')
     end
 
     context 'with wrong parameters' do
@@ -24,7 +24,7 @@ describe LemonWay::MoneyOut do
     it 'calls the send request method with the transfer parameters' do
       expect(LemonWay.client).to \
         receive(:send_request).with('MoneyOut', '1.3', wallet: 'wallet_id')
-      described_class.transfer(wallet: 'wallet_id')
+      described_class.transfer(id: 'wallet_id')
     end
 
     context 'with wrong parameters' do
