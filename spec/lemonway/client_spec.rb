@@ -8,14 +8,14 @@ describe LemonWay::Client do
     let(:options) { {} }
 
     it 'raises a missing configuration error' do
-      expect { client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
+      expect { client }.to raise_error(LemonWay::MissingConfigurationError)
     end
 
     context 'without a login parameter' do
       let(:options) { { password: 'Lemon' } }
 
       it 'raises a missing configuration error' do
-        expect { client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
+        expect { client }.to raise_error(LemonWay::MissingConfigurationError)
       end
     end
 
@@ -23,7 +23,7 @@ describe LemonWay::Client do
       let(:options) { { login: 'Lemon' } }
 
       it 'raises a missing configuration error' do
-        expect { client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
+        expect { client }.to raise_error(LemonWay::MissingConfigurationError)
       end
     end
 
@@ -31,7 +31,7 @@ describe LemonWay::Client do
       let(:options) { { login: 'Lemon', password: 'Way' } }
 
       it 'raises a missing configuration error' do
-        expect { client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
+        expect { client }.to raise_error(LemonWay::MissingConfigurationError)
       end
     end
 
@@ -126,7 +126,7 @@ describe LemonWay::Client do
       end
 
       it 'raises the related method error' do
-        expect { send_request }.to raise_error(LemonWay::Errors::GetWalletDetailsError)
+        expect { send_request }.to raise_error(LemonWay::LemonWayError)
       end
     end
 

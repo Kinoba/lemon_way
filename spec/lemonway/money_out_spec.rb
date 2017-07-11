@@ -15,7 +15,7 @@ describe LemonWay::MoneyOut do
 
       it 'raises the register iban error' do
         expect { described_class.register_iban }.to \
-          raise_error(LemonWay::Errors::RegisterIBANError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -32,7 +32,7 @@ describe LemonWay::MoneyOut do
 
       it 'raises the transfer error' do
         expect { described_class.transfer }.to \
-          raise_error(LemonWay::Errors::MoneyOutError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -49,7 +49,7 @@ describe LemonWay::MoneyOut do
 
       it 'raises the transfer details error' do
         expect { described_class.transfer_details }.to \
-          raise_error(LemonWay::Errors::GetMoneyOutTransDetailsError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end

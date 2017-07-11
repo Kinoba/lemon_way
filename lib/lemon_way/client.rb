@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'lemon_way/errors/client'
+require 'lemon_way/error'
 require 'lemon_way/response_adapter'
 require 'json'
 require 'httparty'
@@ -28,7 +28,7 @@ module LemonWay
 
     def initialize(options = {})
       if (options.keys & REQUIRED_CONFIGURATION).size != REQUIRED_CONFIGURATION.size
-        raise Errors::MissingConfigurationError.new
+        raise MissingConfigurationError.new
       end
 
       @login = options[:login]
@@ -40,7 +40,8 @@ module LemonWay
 
     def send_request(lw_method, version, params = {})
       response = perform_request(lw_method, version, params)
-      ResponseAdapter.new(lw_method, response)
+
+      ResponseAdapter.new(response)
     end
 
     private

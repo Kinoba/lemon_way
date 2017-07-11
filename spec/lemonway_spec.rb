@@ -10,7 +10,7 @@ describe LemonWay do
 
     it 'resets the LemonWay client' do
       LemonWay.reset
-      expect { LemonWay.client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
+      expect { LemonWay.client }.to raise_error(LemonWay::MissingConfigurationError)
     end
   end
 
@@ -26,7 +26,7 @@ describe LemonWay do
     subject(:client) { LemonWay.client }
 
     it 'raises a missing configuration error' do
-      expect { client }.to raise_error(LemonWay::Errors::MissingConfigurationError)
+      expect { client }.to raise_error(LemonWay::MissingConfigurationError)
     end
 
     context 'when configuration is set' do

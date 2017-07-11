@@ -15,7 +15,7 @@ describe LemonWay::MoneyIn do
 
       it 'raises the money in web init error' do
         expect { described_class.init }.to \
-          raise_error(LemonWay::Errors::MoneyInWebInitError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -32,7 +32,7 @@ describe LemonWay::MoneyIn do
 
       it 'raises the money in validate error' do
         expect { described_class.validate }.to \
-          raise_error(LemonWay::Errors::MoneyInValidateError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end

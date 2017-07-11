@@ -23,7 +23,7 @@ describe LemonWay::Form do
 
       it 'raises the create payment form error' do
         expect { described_class.create }.to \
-          raise_error(LemonWay::Errors::CreatePaymentFormError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -41,7 +41,7 @@ describe LemonWay::Form do
 
       it 'raises the get payment form error' do
         expect { described_class.get }.to \
-          raise_error(LemonWay::Errors::GetCompletedPaymentFormError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -59,7 +59,7 @@ describe LemonWay::Form do
 
       it 'raises the disable payment form error' do
         expect { described_class.disable }.to \
-          raise_error(LemonWay::Errors::DisablePaymentFormError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
