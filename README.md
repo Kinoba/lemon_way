@@ -45,7 +45,30 @@ lemon_way_configuration.merge!(sandbox: true) unless Rails.env.production?
 LemonWay.configuration = lemon_way_configuration
 ```
 
+## Middleware
+
+Lemonway needs to know the IP and User-Agent of the request.
+
+This gem provides a middleware: `LemonWay::Middleware` which add this informations for each requests.
+
+If you work with **Rails**, this middleware is already added and you have nothing to do.
+
+Otherwise, you will have to add this middleware by yourself.
+
+
 ## Usage
+
+For information, every request with the gem will trigger a `LemonWay::LemonWayError` if the request is not satisfied.
+
+You can rescue it like that :
+
+```ruby
+def get_lemon_way_wallet
+  LemonWay::Wallet.get(id: 'UnknownId')
+rescue LemonWay::LemonWayError => e
+  # Do what you want
+end
+```
 
 ### Wallet
 
