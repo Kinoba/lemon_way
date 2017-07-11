@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'lemon_way/errors/money_in'
+require 'lemon_way/error'
 
 module LemonWay
   class MoneyIn

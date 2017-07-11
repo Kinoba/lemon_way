@@ -15,7 +15,7 @@ describe LemonWay::Wallet do
 
       it 'raises the get wallet details error' do
         expect { described_class.get }.to \
-          raise_error(LemonWay::Errors::GetWalletDetailsError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -38,7 +38,7 @@ describe LemonWay::Wallet do
       before { stub_error_lemonway_request('RegisterWallet') }
 
       it 'raises the register wallet error' do
-        expect { described_class.register }.to raise_error(LemonWay::Errors::RegisterWalletError)
+        expect { described_class.register }.to raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -55,7 +55,7 @@ describe LemonWay::Wallet do
 
       it 'raises the update wallet details error' do
         expect { described_class.update }.to \
-          raise_error(LemonWay::Errors::UpdateWalletDetailsError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -72,7 +72,7 @@ describe LemonWay::Wallet do
 
       it 'raises the update status error' do
         expect { described_class.update_status }.to \
-          raise_error(LemonWay::Errors::UpdateWalletStatusError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -88,7 +88,7 @@ describe LemonWay::Wallet do
       before { stub_error_lemonway_request('UploadFile') }
 
       it 'raises the upload file error' do
-        expect { described_class.upload_file }.to raise_error(LemonWay::Errors::UploadFileError)
+        expect { described_class.upload_file }.to raise_error(LemonWay::LemonWayError)
       end
     end
   end
@@ -105,7 +105,7 @@ describe LemonWay::Wallet do
 
       it 'raises the upload file error' do
         expect { described_class.transactions_history }.to \
-          raise_error(LemonWay::Errors::GetWalletTransHistoryError)
+          raise_error(LemonWay::LemonWayError)
       end
     end
   end

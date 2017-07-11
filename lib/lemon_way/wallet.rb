@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'lemon_way/errors/wallet'
+require 'lemon_way/error'
 require 'lemon_way/generators/id'
 
 module LemonWay
