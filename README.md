@@ -15,7 +15,7 @@ First, you need to sign up and own a Lemonway account.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'lemon_way'
+gem 'lemonway_ruby'
 ```
 
 And then execute:
@@ -24,7 +24,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install lemon_way
+    $ gem install lemonway_ruby
 
 ## Configuration:
 
@@ -34,7 +34,7 @@ There are 2 optionals parameters => sandbox / language
 
 If you work with **Rails** :
 ```ruby
-# config/initializers/lemon_way.rb
+# config/initializers/lemonway_ruby.rb
 lemon_way_configuration = {
   login: ENV['LEMONWAY_LOGIN'],
   password: ENV['LEMONWAY_PASSWORD'],
