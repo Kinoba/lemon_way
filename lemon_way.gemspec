@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'lemon_way/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'lemon_way'
+  spec.name          = 'lemonway_ruby'
   spec.version       = LemonWay::VERSION
   spec.authors       = ['Alexandre Ktifa', 'Julien Lerpscher']
   spec.email         = ['contact@mespetitsartistes.fr']
