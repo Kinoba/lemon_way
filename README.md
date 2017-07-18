@@ -38,9 +38,10 @@ If you work with **Rails** :
 lemon_way_configuration = {
   login: ENV['LEMONWAY_LOGIN'],
   password: ENV['LEMONWAY_PASSWORD'],
-  company: ENV['LEMONWAY_COMPANY']
+  company: ENV['LEMONWAY_COMPANY'],
+  society_wallet_id: ENV['LEMONWAY_SOCIETY_WALLET_ID']
 }
-lemon_way_configuration.merge!(sandbox: true) unless Rails.env.production?
+lemon_way_configuration[:sandbox] = true unless Rails.env.production?
 
 LemonWay.configuration = lemon_way_configuration
 ```
