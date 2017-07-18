@@ -9,11 +9,8 @@ module LemonWay
   class Client
     include HTTParty
 
-    attr_reader :login, :password, :company, :env, :options
-
     DIRECTKIT_URL = \
       'https://sandbox-api.lemonway.fr/mb/{company_name}/{env}/directkitjson2/Service.asmx'.freeze
-
     REQUIRED_CONFIGURATION = %i[login password company].freeze
     DEFAULT_LANGUAGE = 'fr'.freeze
     DEFAULT_HEADERS = {
@@ -23,6 +20,8 @@ module LemonWay
       'Pragma' => 'no-cache'
     }.freeze
 
+    attr_reader :login, :password, :company, :society_wallet_id, :env, :options
+
     base_uri DIRECTKIT_URL
     debug_output $stdout
 
@@ -31,11 +30,12 @@ module LemonWay
         raise MissingConfigurationError.new
       end
 
-      @login = options[:login]
-      @password = options[:password]
-      @company = options[:company]
+      %i[login password company society_wallet_id].each do |key|
+        instance_variable_set("@#{key}".to_sym, options.delete(key))
+      end
+
       @env = options[:sandbox] ? 'dev' : 'prod'
-      @options = options.delete_if { |k, _v| REQUIRED_CONFIGURATION.include?(k) }
+      @options = options
     end
 
     def send_request(lw_method, version, params = {})

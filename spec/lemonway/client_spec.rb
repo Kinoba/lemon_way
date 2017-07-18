@@ -37,7 +37,14 @@ describe LemonWay::Client do
 
     context 'with a login/password/company parameter' do
       let(:options) do
-        { login: 'Lemon', password: 'Way', company: 'LemonWay', language: :en, sandbox: true }
+        {
+          login: 'Lemon',
+          password: 'Way',
+          company: 'LemonWay',
+          language: :en,
+          sandbox: true,
+          society_wallet_id: '123456789'
+        }
       end
 
       it 'sets the LemonWay client login' do
@@ -50,6 +57,10 @@ describe LemonWay::Client do
 
       it 'sets the LemonWay client company' do
         expect(client.company).to eq 'LemonWay'
+      end
+
+      it 'sets the LemonWay client society_wallet_id' do
+        expect(client.society_wallet_id).to eq '123456789'
       end
 
       it 'sets the LemonWay client options' do
