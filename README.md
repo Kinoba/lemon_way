@@ -112,6 +112,15 @@ This module allows you to prepare/debit a wallet to credit a bank account:
 
 Details of the [MoneyOut module](https://github.com/MesPetitsArtistes/lemon_way/wiki/MoneyOut).
 
+### P2P
+
+This module allows you to transfer fund from a Wallet to another Wallet
+
+* Send payment from a wallet to another wallet
+* Get details on wallet to wallet transfer
+
+Details of the [P2P module](https://github.com/MesPetitsArtistes/lemon_way/wiki/P2P).
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
