@@ -9,6 +9,7 @@ require 'lemon_way/form'
 require 'lemon_way/p2p'
 require 'lemon_way/middleware'
 require 'lemon_way/helpers/forms'
+require 'lemon_way/helpers/money_in'
 require 'lemon_way/generators/id'
 require 'lemon_way/railtie' if defined?(Rails)
 
