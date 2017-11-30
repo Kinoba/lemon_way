@@ -4,7 +4,7 @@ module LemonWay
   module Helpers
     module MoneyIn
       DIRECTKIT_MONEY_IN_URL = \
-        'https://webkit.lemonway.fr/mb/{company_name}/{env}/?moneyintoken={token}'.freeze
+        'https://sandbox-webkit.lemonway.fr/{company_name}/{env}/?moneyintoken={token}'.freeze
 
       def lemon_way_money_in_url(money_in_token)
         DIRECTKIT_MONEY_IN_URL

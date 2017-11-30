@@ -4,7 +4,7 @@ module LemonWay
   module Helpers
     module Forms
       DIRECTKIT_FORM_URL = \
-        'https://webkit.lemonway.fr/mb/{company_name}/{env}/payment-page/?fId={id}'.freeze
+        'https://sandbox-webkit.lemonway.fr/{company_name}/{env}/payment-page/?fId={id}'.freeze
 
       def lemon_way_form_url(form_id)
         DIRECTKIT_FORM_URL
