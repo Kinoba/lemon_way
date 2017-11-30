@@ -20,7 +20,7 @@ module LemonWay
     end
 
     def response_keys
-      %i[wallet moneyinweb trans form iban_register trans_sendpayment]
+      %i[wallet moneyinweb trans form iban_register trans_sendpayment upload]
     end
   end
 end
