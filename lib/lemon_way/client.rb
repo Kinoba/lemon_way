@@ -10,7 +10,7 @@ module LemonWay
     include HTTParty
 
     DIRECTKIT_URL = \
-      'https://sandbox-webkit.lemonway.fr/{company_name}/{env}/directkitjson2/Service.asmx'.freeze
+      'https://sandbox-api.lemonway.fr/mb/{company_name}/{env}/directkitjson2/Service.asmx'.freeze
     REQUIRED_CONFIGURATION = %i[login password company].freeze
     DEFAULT_LANGUAGE = 'fr'.freeze
     DEFAULT_HEADERS = {
