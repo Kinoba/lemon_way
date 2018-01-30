@@ -11,6 +11,8 @@ module LemonWay
       raise LemonWay::LemonWayError.new(response[:e]) if response[:e].present?
 
       super(values_for(response))
+    rescue JSON::ParserError => e
+      raise LemonWay::AuthenticationError.new(e.message)
     end
 
     private

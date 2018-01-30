@@ -18,13 +18,27 @@ module LemonWay
   end
 
   class LemonWayError < StandardError
+    attr_reader :code
+    attr_reader :message
+    attr_reader :documentation
+
     DIRECKIT_DOCUMENTATION_URL = 'http://documentation.lemonway.fr/api-en/directkit'.freeze
 
     def initialize(error = {})
+      @code = error.try(:[], :code)
+      @message = error.try(:[], :msg)
+      @documentation = DIRECKIT_DOCUMENTATION_URL
+
+      super(error)
+    end
+  end
+
+  class AuthenticationError < StandardError
+    @message = 'Authentication error, please double check your Lemonway credentials'
+
+    def initialize(_error)
       super(%(
-        Code: #{error.try(:[], :code)}
-        Message: #{error.try(:[], :msg)}
-        Documentation: #{DIRECKIT_DOCUMENTATION_URL}
+        Authentication error, please double check your Lemonway credentials
       ))
     end
   end
