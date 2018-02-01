@@ -16,20 +16,24 @@ require 'lemon_way/railtie' if defined?(Rails)
 module LemonWay
   @@client = nil
   @@configuration = {}
+  @@proxy = {}
 
   def self.init
-    @@client = Client.new(@@configuration)
+    @@client = Client.new(@@configuration, @@proxy)
   end
 
   def self.reset
     @@client = nil
     @@configuration = {}
+    @@proxy = {}
   end
 
   def self.configuration=(configuration)
     @@configuration = configuration
+  end
 
-    LemonWay.init
+  def self.proxy=(proxy)
+    @@proxy = proxy
   end
 
   def self.client

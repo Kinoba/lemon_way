@@ -25,7 +25,7 @@ module LemonWay
     base_uri DIRECTKIT_URL
     debug_output $stdout
 
-    def initialize(options = {})
+    def initialize(options = {}, proxy = {})
       if (options.keys & REQUIRED_CONFIGURATION).size != REQUIRED_CONFIGURATION.size
         raise MissingConfigurationError.new
       end
@@ -36,6 +36,7 @@ module LemonWay
 
       @env = options[:sandbox] ? 'dev' : 'prod'
       @options = options
+      @proxy = proxy
     end
 
     def send_request(lw_method, version, params = {})
@@ -47,9 +48,16 @@ module LemonWay
     private
 
     def perform_request(lw_method, version, params)
-      self.class.post([directkit_url, lw_method].join('/'),
-                      headers: DEFAULT_HEADERS,
-                      body: { p: request_body(version, params) }.to_json)
+      if @proxy != {}
+        @proxy[:headers] = DEFAULT_HEADERS
+        @proxy[:body] = { p: request_body(version, params) }.to_json
+        self.class.post([directkit_url, lw_method].join('/'),
+                        @proxy)
+      else
+        self.class.post([directkit_url, lw_method].join('/'),
+                        headers: DEFAULT_HEADERS,
+                        body: { p: request_body(version, params) }.to_json)
+      end
     end
 
     def directkit_url
